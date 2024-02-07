@@ -8,7 +8,7 @@ import { DrinkList } from './components/DrinkList';
 import { DrinkChoice } from './components/DrinkChoice';
 import { DrinkItem } from './components/DrinkItem';
 import './components/ui/Button.css';
-import { Heading } from '@chakra-ui/react'
+import { Heading } from '@chakra-ui/react';
 
 export const App = () => {
   const greeting = 'Welcome to our cafe!';
@@ -26,18 +26,24 @@ export const App = () => {
     <div className="App">
       {userDrink ? (
         <>
-          <Heading size={"xl"} color={"black.200"} marginBottom={"2rem"}>{greeting}</Heading>
+          <Heading size={'xl'} color={'black.200'} marginBottom={'2rem'}>
+            {greeting}
+          </Heading>
           {/* // Only render DrinkChoice if a drink is selected */}
-          <DrinkChoice drink={userDrink} clickFn={setUserDrink} />{/*//adding clickFn={setUserDrink} here fixed the issue, 
+          <DrinkChoice drink={userDrink} clickFn={setUserDrink} />
+          {/*//adding clickFn={setUserDrink} here fixed the issue, 
           basically I pass it to the child component so over there I can use it here:  <Button onClick={() => clickFn(null)} variant="ghost">
           by given null to clickFn in there I reset the choice in the Modal*/}
-          <button className="button" onClick={() => setUserDrink(null)}>Reset the choice</button>
+          <button className="button" onClick={() => setUserDrink(null)}>
+            Reset the choice
+          </button>
         </>
       ) : (
-       
         // if not render the following:
         <>
-            <Heading size={"2xl"} color={"black.200"} marginBottom={"2rem"}>{greeting}</Heading>
+          <Heading size={'2xl'} color={'black.200'} marginBottom={'2rem'}>
+            {greeting}
+          </Heading>
           {/* <DrinkButtons drinkOne={tea.name} drinkTwo={coffee.name} /> */}
           <p>Please select a drink</p>
           <DrinkSearch clickFn={setUserDrink} />
