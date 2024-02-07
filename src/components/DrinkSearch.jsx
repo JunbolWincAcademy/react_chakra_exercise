@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { TextInput } from "./ui/TextInput"; // Adjust the import path as necessary
 import { DrinkList } from "./DrinkList"; // Adjust the import path as necessary
 import { availableDrinks } from '../utils/data'; // Adjust the import path as necessary
+import { Center, Square, Circle } from '@chakra-ui/react'
 
 export const DrinkSearch = ({clickFn}) => {
     const [searchField, setSearchField] = useState(''); // Initialize with an empty string
@@ -20,10 +21,11 @@ export const DrinkSearch = ({clickFn}) => {
     });
 
     return (
-        <>
-        <label>Search for drinks:</label>
-        <TextInput changeFn={handleChange} />
-       <DrinkList clickFn={clickFn} drinks={matchedDrinks} />  {/* this was missing here: clickFn={clickFn} */}
+        <><center>
+            <label>Search for drinks:</label>
+            <TextInput changeFn={handleChange} w={200} mb={8} />{/*/ the w={200} mb={8} are not doing anything???*/}
+            <DrinkList clickFn={clickFn} drinks={matchedDrinks} />  {/* this was missing here: clickFn={clickFn} */}
+        </center> 
         </>
     );      
 };
