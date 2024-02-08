@@ -1,9 +1,8 @@
-
 import {
   Center,
   Flex,
   Heading,
-  Button,
+  Button, //this was missing
   Image,
   Modal,
   ModalBody,
@@ -19,56 +18,57 @@ import {
 //  import { Button } from './ui/Button';
 
 export const DrinkChoice = ({ drink, clickFn }) => {
-
   const { isOpen, onOpen, onClose } = useDisclosure();
-  
-    return (
-      <Center flexDir={'column'} gap={4}>
-        
-          <Heading>Your choice:{drink.name}</Heading> {/* Displaying the drink's name */}
-          {/* Displaying the drink's image */}
-          <img src={drink.imgUrl} alt={drink.alt} style={{ width: '100px', height: '100px' }} />
-          {    /* a bit explanation about how style works in jsx: the style attribute in JSX expects a javascript object.
+
+  return (
+    <Center flexDir={'column'} gap={4}>
+      <Heading>Your choice:{drink.name}</Heading> {/* Displaying the drink's name */}
+      {/* Displaying the drink's image */}
+      <img src={drink.imgUrl} alt={drink.alt} style={{ width: '100px', height: '100px' }} />
+      {/* a bit explanation about how style works in jsx: the style attribute in JSX expects a javascript object.
           and because in JSX you need curly brackets to embed a javascript expression which all the style statement
           that is the reason of the {{...}}    */}
-          {/* Additional paragraph */}
-          <Text>Your {drink.name} will be ready in a few minutes.</Text>
-          <Flex mt={4}>
+      {/* Additional paragraph */}
+      <Text>Your {drink.name} will be ready in a few minutes.</Text>
+      <Flex mt={4}>
         <Button onClick={onOpen} mr={4}>
+          {/*in order for this Button to work I needed ot add Button in import list from Chakra it wasn't there}*/}
           Confirm order
         </Button>
-        <Button onClick={() => clickFn(null)} variant="ghost">{/*//adding clickFn={null} here fixed the issue, 
+        <Button onClick={() => clickFn(null)} variant="ghost">
+          {/*//adding clickFn={null} here fixed the issue, 
           basically I pass it to this child component DrinkChoice form App I can use it here:  <Button onClick={() => clickFn(null)} variant="ghost">
           by given null to clickFn in there I reset the choice in here the Modal*/}
           Change selection
         </Button>
       </Flex>
+      <Flex flexDirection={{ base: 'column', sm: 'row' }}>
+        <Modal isOpen={isOpen} onClose={onClose} size={{ base: 'full', sm: 'md' }}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Confirm your order</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody 
+            display="flex" 
+            height={{base:'full', sm:'fit-content'}}
+            flexDir="column"
+            alignItems={{base:'center', sm:'flex-start'}}
+            justifyContent="center"
+            textAlign={{ base: 'center', sm: 'left' }} >
+              <Text >1x {drink.name}</Text>
+            </ModalBody>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Confirm your order</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Text>1x {drink.name}</Text>
-          </ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme="teal" mr={4}>
-              Confirm
-            </Button>
-            <Button variant="ghost" onClick={onClose}>
-              Cancel
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-
-          
-     
-
-      </Center>
-
-    );
+            <ModalFooter>
+              <Button colorScheme="teal" mr={4}>
+                Confirm
+              </Button>
+              <Button variant="ghost" onClick={onClose}>
+                Cancel
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </Flex>
+    </Center>
+  );
 };
-

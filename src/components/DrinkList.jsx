@@ -1,17 +1,21 @@
 // import { availableDrinks } from '../utils/data';
 import { DrinkItem } from './DrinkItem';
+import { Flex, List } from '@chakra-ui/react';
 
-export const DrinkList = ({clickFn, drinks}) => {
+export const DrinkList = ({ clickFn, drinks }) => {
   const drinkItems = drinks.map((item, index) => (
-    <li key={index}>
-      <DrinkItem drink={item} clickFn={clickFn}/>
-    </li>
+      <List styleType="none" key={index}>{/*in order to get rid off the bullets I had to use the List comp from Chakra and give it that style */}
+      <DrinkItem drink={item} clickFn={clickFn} />
+    </List>
   ));
-  return <ul style={{ listStyle: 'none' }}>{drinkItems}</ul>;
+  return (
+    <Flex gap={16} w={['full', '75%']} flexWrap="wrap" flexDir={{ base: 'column', sm: 'row' }} justify="center" alignItems="center">
+      {drinkItems}
+    </Flex>
+  );
 };
 
-//------EXPLANATION OF WHAT IS HAPPENING HERE and specially why "key" is in <li>
-/* The first thing is to know that <li key={index}/> here we are giving <li> 
+/* The first thing is to know that <li key={index}/> here we are giving <li>  
 a the prop key={index}. Ard that is how you add props to HTML elements in React
 The second thing is when you are going to show different <li> elements those will
 treated as siblings by React and React have this rule that each sibling needs 
