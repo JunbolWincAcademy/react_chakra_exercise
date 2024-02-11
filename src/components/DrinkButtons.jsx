@@ -1,4 +1,4 @@
-import './DrinkButtons.css';
+// import './DrinkButtons.css';
 import { Button } from './ui/Button';
 //Inside the DrinkButtons.jsx file, pass the drinkOne and drinkTwo props as parameters using the object destructuring syntax.
 export const DrinkButtons = ({ drinkOne, drinkTwo }) => {

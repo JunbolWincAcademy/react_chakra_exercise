@@ -1,5 +1,5 @@
 import './App.css'; // this is different
-import './components/DrinkItem.css';
+// import './components/DrinkItem.css';
 //import { DrinkButtons } from './components/DrinkButtons'; //this is different DrinkButtons is not in the ui folder
 import { useState } from 'react';
 import { DrinkSearch } from './components/DrinkSearch';
@@ -7,7 +7,7 @@ import { DrinkSearch } from './components/DrinkSearch';
 import { DrinkList } from './components/DrinkList';
 import { DrinkChoice } from './components/DrinkChoice';
 import { DrinkItem } from './components/DrinkItem';
-import './components/ui/Button.css';
+// import './components/ui/Button.css';
 import { Heading } from '@chakra-ui/react';
 
 export const App = () => {
