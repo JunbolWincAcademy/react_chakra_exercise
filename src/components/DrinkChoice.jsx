@@ -22,6 +22,7 @@ export const DrinkChoice = ({ drink, clickFn }) => {
 
   return (
     <Center flexDir={'column'} gap={4}>
+      {/*because I am using <Center>, this replace the use of fragments*?/}
       <Heading>Your choice:{drink.name}</Heading> {/* Displaying the drink's name */}
       {/* Displaying the drink's image */}
       <img src={drink.imgUrl} alt={drink.alt} style={{ width: '100px', height: '100px' }} />
@@ -48,14 +49,15 @@ export const DrinkChoice = ({ drink, clickFn }) => {
           <ModalContent>
             <ModalHeader>Confirm your order</ModalHeader>
             <ModalCloseButton />
-            <ModalBody 
-            display="flex" 
-            height={{base:'full', sm:'fit-content'}}
-            flexDir="column"
-            alignItems={{base:'center', sm:'flex-start'}}
-            justifyContent="center"
-            textAlign={{ base: 'center', sm: 'left' }} >
-              <Text >1x {drink.name}</Text>
+            <ModalBody
+              display="flex"
+              height={{ base: 'full', sm: 'fit-content' }}
+              flexDir="column"
+              alignItems={{ base: 'center', sm: 'flex-start' }}
+              justifyContent="center"
+              textAlign={{ base: 'center', sm: 'left' }}
+            >
+              <Text>1x {drink.name}</Text>
             </ModalBody>
 
             <ModalFooter>
